@@ -33,10 +33,18 @@ void setup() {
 }
 
 void draw() {
-  if(keyPressed){
-    if (key == 's') {
-      S.pressed(keyPressed);
-    }
-  }
+
 }
 
+void keyPressed() {
+    if(key == 's'){
+      int before = S.getColor();
+      S.pressed(true);
+    }
+}
+
+void keyReleased(){
+  if(key == 's' && S.getColor() == 200){
+    S.pressed(false);
+  }
+}
