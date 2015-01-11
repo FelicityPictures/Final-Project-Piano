@@ -1,59 +1,71 @@
 public class Keys {
   //Instance variables: width, length, x/y coordinate, color; note
-  int x, y, origColor;
+  int x, y, origColor, col;
   char note;
 
   //constructor
-  Keys(int x, int y, char note) {
+  Keys(int x, int y, int origColor, char note) {
     setx(x);
     sety(y);
+    setOrigColor(origColor);
+    setColor(origColor);
     setNote(note);
   }
-  
-  Keys(){
+
+  Keys() {
   }
 
   public int getx() {
     return x;
   }
-  public void setx(int xcor) {
+  void setx(int xcor) {
     x=xcor;
   }
 
-  public int gety() {
+  int gety() {
     return y;
   }
-  public void sety(int ycor) {
+  void sety(int ycor) {
     y=ycor;
   }
 
-  public char getNote() {
+  char getNote() {
     return note;
   }
-  public void setNote(char n) {
+  void setNote(char n) {
     note=n;
   }
 
-  public void setOrigColor(int oc) {
+  void setOrigColor(int oc) {
     origColor = oc;
   }
-  
-  public void show(){
+
+  void setColor(int c) {
+    col = c;
+  }
+
+  int getColor() {
+    return col;
+  }
+
+  void show() {
+    fill(col);
   }
   //used by Piano to change color and play note
-  /*
-  public void pressed(boolean p) {
-   if (p) {
-   setColor(200);
-   //show();
-   } else {
-   //go back to normal
-   setColor(origColor);
-   //show();
-   }
-   }
-   
-   //show()
-   */
+
+  public void pressed(boolean p, boolean isBlack) {
+    if (p) {
+      setColor(200);
+      if (!isBlack) {
+        show();
+      }
+    } else {
+      //go back to normal
+      setColor(origColor);
+      if (!isBlack) {
+        show();
+      }
+    }
+  }
 }
 
