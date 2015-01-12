@@ -46,3 +46,7 @@ Planned: reintroduce keyPressed and keyReleased
 Added right, center, and left whiteKeys shapes
 
 Continued to work on pressed() method
+
+1/12/15:
+
+Reimplemented pressed() methods. Currently only changed color, not sound
