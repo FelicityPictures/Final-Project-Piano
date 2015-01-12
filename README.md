@@ -40,3 +40,9 @@ Seperated Keys into 2 different child classes: BlackKeys and WhiteKeys
 Implemented custom whiteKeys shape
 
 Planned: reintroduce keyPressed and keyReleased
+
+1/10/15:
+
+Added right, center, and left whiteKeys shapes
+
+Continued to work on pressed() method
