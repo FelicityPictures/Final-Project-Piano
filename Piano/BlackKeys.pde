@@ -5,8 +5,20 @@ class BlackKeys extends Keys {
   }
 
   void show() {
-    super.show();
+    fill(col);
     rect(getx(), gety(), 30, 100);
   }
+  
+  public void pressed(boolean p) {
+    if (p) {
+      setColor(200);
+      this.show();
+    } else {
+      //go back to normal
+      setColor(origColor);
+      this.show();
+    }
+  }
+  
 }
 
