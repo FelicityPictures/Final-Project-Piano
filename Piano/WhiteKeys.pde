@@ -47,8 +47,20 @@ class WhiteKeys extends Keys {
   }
 
   void show() {
-    super.show();
+    whiteKey.setFill(color(col));
     shape(whiteKey, getx(), gety());
   }
+  
+  
+  public void pressed(boolean p) {
+    if (p) {
+      setColor(200);
+      this.show();
+    } else {
+      //go back to normal
+      setColor(origColor);
+      this.show();
+    }
+  }
+  
 }
-
