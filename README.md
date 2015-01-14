@@ -62,3 +62,7 @@ Reimplemented pressed() methods. Currently only changed color, not sound
 Put keys into array. 
 
 Start work on adding notes to piano. Planned to use minim.
+
+1/14/15:
+
+Implemented keyPressed() and keyReleased() for all keys
