@@ -10,7 +10,13 @@ Uses keyboard and mouse clicks
 
 PLANNED:
 
-Game Mode - Play piano is correct sequence in time with the music.
+Other Modes planned 
+
+Ideas:
+
+Different instrument sounds
+
+
 
 
 1/6/15:
@@ -50,3 +56,9 @@ Continued to work on pressed() method
 1/12/15:
 
 Reimplemented pressed() methods. Currently only changed color, not sound
+
+1/13/15:
+
+Put keys into array. 
+
+Start work on adding notes to piano. Planned to use minim.
