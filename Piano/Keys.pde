@@ -49,23 +49,22 @@ public class Keys {
   }
 
   void show() {
-    fill(col);
   }
+
+
   //used by Piano to change color and play note
 
-  public void pressed(boolean p, boolean isBlack) {
+  public void pressed(boolean p) {
+    /*
     if (p) {
-      setColor(200);
-      if (!isBlack) {
-        show();
-      }
+      setColor(255);
+      show();
     } else {
       //go back to normal
       setColor(origColor);
-      if (!isBlack) {
-        show();
-      }
+      show();
     }
+  */
   }
+  
 }
-
