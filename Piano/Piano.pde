@@ -30,10 +30,88 @@ void keyPressed() {
     //int before = S.getColor();
     KeyBoard[0].pressed(true);
   }
+  if (key == 'd') {
+    //int before = S.getColor();
+    KeyBoard[1].pressed(true);
+  }
+  if (key == 'f') {
+    //int before = S.getColor();
+    KeyBoard[2].pressed(true);
+  }
+  if (key == 'g') {
+    //int before = S.getColor();
+    KeyBoard[3].pressed(true);
+  }
+  if (key == 'h') {
+    //int before = S.getColor();
+    KeyBoard[4].pressed(true);
+  }
+  if (key == 'j') {
+    //int before = S.getColor();
+    KeyBoard[5].pressed(true);
+  }
+  if (key == 'k') {
+    //int before = S.getColor();
+    KeyBoard[6].pressed(true);
+  }
+  if (key == 'e') {
+    //int before = S.getColor();
+    KeyBoard[7].pressed(true);
+  }
+  if (key == 'r') {
+    //int before = S.getColor();
+    KeyBoard[8].pressed(true);
+  }
+  if (key == 'y') {
+    //int before = S.getColor();
+    KeyBoard[9].pressed(true);
+  }
+  if (key == 'u') {
+    //int before = S.getColor();
+    KeyBoard[10].pressed(true);
+  }
+  if (key == 'i') {
+    //int before = S.getColor();
+    KeyBoard[11].pressed(true);
+  }
+  
 }
 
 void keyReleased() {
   if (key == 's' && KeyBoard[0].getColor() == 200) {
     KeyBoard[0].pressed(false);
+  }
+   if (key == 'd' && KeyBoard[1].getColor() == 200) {
+    KeyBoard[1].pressed(false);
+  }
+   if (key == 'f' && KeyBoard[2].getColor() == 200) {
+    KeyBoard[2].pressed(false);
+  }
+   if (key == 'g' && KeyBoard[3].getColor() == 200) {
+    KeyBoard[3].pressed(false);
+  }
+   if (key == 'h' && KeyBoard[4].getColor() == 200) {
+    KeyBoard[4].pressed(false);
+  }
+   if (key == 'j' && KeyBoard[5].getColor() == 200) {
+    KeyBoard[5].pressed(false);
+  }
+   if (key == 'k' && KeyBoard[6].getColor() == 200) {
+    KeyBoard[6].pressed(false);
+  }
+   if (key == 'e' && KeyBoard[7].getColor() == 200) {
+    KeyBoard[7].pressed(false);
+  }
+   if (key == 'r' && KeyBoard[8].getColor() == 200) {
+    KeyBoard[8].pressed(false);
+  }
+   if (key == 'y' && KeyBoard[9].getColor() == 200) {
+    KeyBoard[9].pressed(false);
+  }
+   if (key == 'u' && KeyBoard[10].getColor() == 200) {
+    KeyBoard[10].pressed(false);
+  }
+   if (key == 'i' && KeyBoard[11].getColor() == 200) {
+    KeyBoard[11].pressed(false);
   }
 }
