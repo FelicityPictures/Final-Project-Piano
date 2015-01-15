@@ -1,9 +1,15 @@
+import promidi.*;
+
+MidiIO midiIO;
+MidiOut midiOut;
+
+Note c = new Note(60, 64, 1000);
+
 Keys[] KeyBoard = new Keys[12];
 
 void setup() { 
   size(351, 301, P3D);
   //make keys
-
   KeyBoard[0] = new WhiteKeys(1, 0, 100, 'c');
   KeyBoard[1] = new WhiteKeys(2, 50, 100, 'd');
   KeyBoard[2] = new WhiteKeys(3, 150, 100, 'e');
@@ -17,9 +23,9 @@ void setup() {
   KeyBoard[10] = new BlackKeys(235, 100, '4');
   KeyBoard[11] = new BlackKeys(285, 100, '5');
 
- for(int i=0;i<KeyBoard.length;i++){
-     KeyBoard[i].show();
- }
+  for (int i=0; i<KeyBoard.length; i++) {
+    KeyBoard[i].show();
+  }
 }
 
 void draw() {
@@ -28,6 +34,7 @@ void draw() {
 void keyPressed() {
   if (key == 's') {
     //int before = S.getColor();
+    playNote();
     KeyBoard[0].pressed(true);
   }
   if (key == 'd') {
@@ -74,44 +81,48 @@ void keyPressed() {
     //int before = S.getColor();
     KeyBoard[11].pressed(true);
   }
-  
 }
 
 void keyReleased() {
   if (key == 's' && KeyBoard[0].getColor() == 200) {
     KeyBoard[0].pressed(false);
   }
-   if (key == 'd' && KeyBoard[1].getColor() == 200) {
+  if (key == 'd' && KeyBoard[1].getColor() == 200) {
     KeyBoard[1].pressed(false);
   }
-   if (key == 'f' && KeyBoard[2].getColor() == 200) {
+  if (key == 'f' && KeyBoard[2].getColor() == 200) {
     KeyBoard[2].pressed(false);
   }
-   if (key == 'g' && KeyBoard[3].getColor() == 200) {
+  if (key == 'g' && KeyBoard[3].getColor() == 200) {
     KeyBoard[3].pressed(false);
   }
-   if (key == 'h' && KeyBoard[4].getColor() == 200) {
+  if (key == 'h' && KeyBoard[4].getColor() == 200) {
     KeyBoard[4].pressed(false);
   }
-   if (key == 'j' && KeyBoard[5].getColor() == 200) {
+  if (key == 'j' && KeyBoard[5].getColor() == 200) {
     KeyBoard[5].pressed(false);
   }
-   if (key == 'k' && KeyBoard[6].getColor() == 200) {
+  if (key == 'k' && KeyBoard[6].getColor() == 200) {
     KeyBoard[6].pressed(false);
   }
-   if (key == 'e' && KeyBoard[7].getColor() == 200) {
+  if (key == 'e' && KeyBoard[7].getColor() == 200) {
     KeyBoard[7].pressed(false);
   }
-   if (key == 'r' && KeyBoard[8].getColor() == 200) {
+  if (key == 'r' && KeyBoard[8].getColor() == 200) {
     KeyBoard[8].pressed(false);
   }
-   if (key == 'y' && KeyBoard[9].getColor() == 200) {
+  if (key == 'y' && KeyBoard[9].getColor() == 200) {
     KeyBoard[9].pressed(false);
   }
-   if (key == 'u' && KeyBoard[10].getColor() == 200) {
+  if (key == 'u' && KeyBoard[10].getColor() == 200) {
     KeyBoard[10].pressed(false);
   }
-   if (key == 'i' && KeyBoard[11].getColor() == 200) {
+  if (key == 'i' && KeyBoard[11].getColor() == 200) {
     KeyBoard[11].pressed(false);
   }
 }
+
+void playNote() {
+  midiOut.sendNote(c);
+}
+
