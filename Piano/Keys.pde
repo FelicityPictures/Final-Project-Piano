@@ -1,15 +1,16 @@
 public class Keys {
   //Instance variables: width, length, x/y coordinate, color; note
-  int x, y, origColor, col;
-  char note;
+  int x, y, origColor, col, pitch;
+  Note note;
 
   //constructor
-  Keys(int x, int y, int origColor, char note) {
+  Keys(int x, int y, int origColor, int pitch) {
     setx(x);
     sety(y);
     setOrigColor(origColor);
     setColor(origColor);
-    setNote(note);
+    setPitch(pitch);
+    setNote(pitch);
   }
 
   Keys() {
@@ -19,21 +20,21 @@ public class Keys {
     return x;
   }
   void setx(int xcor) {
-    x=xcor;
+    x = xcor;
   }
 
   int gety() {
     return y;
   }
   void sety(int ycor) {
-    y=ycor;
+    y = ycor;
   }
 
-  char getNote() {
-    return note;
+  int getPitch() {
+    return pitch;
   }
-  void setNote(char n) {
-    note=n;
+  void setPitch(int p) {
+    pitch = p;
   }
 
   void setOrigColor(int oc) {
@@ -48,6 +49,14 @@ public class Keys {
     return col;
   }
 
+  void setNote(int p) {
+    int c = 0;
+    int v = 100;
+    //int t = 500;
+    p = pitch;
+    note = new Note(c, p, v);
+  }
+
   void show() {
   }
 
@@ -57,14 +66,20 @@ public class Keys {
   public void pressed(boolean p) {
     /*
     if (p) {
-      setColor(255);
-      show();
-    } else {
-      //go back to normal
-      setColor(origColor);
-      show();
-    }
-  */
+     setColor(255);
+     show();
+     } else {
+     //go back to normal
+     setColor(origColor);
+     show();
+     }
+     */
   }
-  
+
+  void playNote(int p, boolean b) {
+    if (b == true) {
+      midiBus.sendNoteOn(note);
+    }
+  }
 }
+

@@ -2,8 +2,8 @@ class WhiteKeys extends Keys {
 
   PShape whiteKey;
 
-  public WhiteKeys(int pos, int x, int y, char note) {
-    super(x, y, 255, note);
+  public WhiteKeys(int pos, int x, int y, int pitch) {
+    super(x, y, 255, pitch);
     if (pos == 1) { 
       makeWhiteKeysLeft();
     }
@@ -50,8 +50,8 @@ class WhiteKeys extends Keys {
     whiteKey.setFill(color(col));
     shape(whiteKey, getx(), gety());
   }
-  
-  
+
+
   public void pressed(boolean p) {
     if (p) {
       setColor(200);
@@ -62,5 +62,5 @@ class WhiteKeys extends Keys {
       this.show();
     }
   }
-  
 }
+

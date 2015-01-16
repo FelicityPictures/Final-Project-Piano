@@ -1,7 +1,7 @@
 class BlackKeys extends Keys {
 
-  public BlackKeys(int x, int y, char note) {
-    super(x, y, 0, note);
+  public BlackKeys(int x, int y, int pitch) {
+    super(x, y, 0, pitch);
   }
 
   void show() {
