@@ -68,3 +68,11 @@ Start work on adding notes to piano. Planned to use minim.
 Implemented keyPressed() and keyReleased() for all keys
 
 For personal reference: http://www.cs.cmu.edu/~music/cmsip/readings/MIDI%20tutorial%20for%20programmers.html
+
+1/15/15:
+
+Implemented notes/sound
+
+1/16/15:
+
+Added 2 more octaves
