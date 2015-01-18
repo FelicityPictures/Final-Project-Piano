@@ -76,3 +76,7 @@ Implemented notes/sound
 1/16/15:
 
 Added 2 more octaves
+
+1/18/15:
+
+Added title screen //need to position text and buttons
