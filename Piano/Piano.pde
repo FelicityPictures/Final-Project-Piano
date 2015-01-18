@@ -2,15 +2,16 @@ import themidibus.*;
 
 MidiBus midiBus;
 int currentScreen;
+int currentOctave = 0;
 int BeginX = 125;
 int BeginY = 150;
 int BeginW = 100;
 int BeginH = 30;
 
-
 Keys[] KeyBoard0 = new Keys[12];
 Keys[] KeyBoard1 = new Keys[12];
 Keys[] KeyBoard2 = new Keys[12];
+Keys[] temp = new Keys[12];
 
 void setup() { 
   size(351, 301, P3D);
@@ -77,109 +78,131 @@ void draw() {
     background(0); 
     break;
   }
+  octaveChange();
+}
+
+void octaveChange() {
+  if (key == CODED) {
+    if (keyCode == SHIFT && currentOctave <= 1) {
+      currentOctave--;
+    }
+    if (keyCode == CONTROL && currentOctave >= -1) {
+      currentOctave++;
+    }
+  }
+  
+  if(currentOctave == 0){
+    temp = KeyBoard0.clone();
+  }
+  if(currentOctave == -1){
+    temp = KeyBoard2.clone();
+  }
+  if(currentOctave == 1){
+    temp = KeyBoard1.clone();
+  }
 }
 
 void keyPressed() {
   if (currentScreen == 1) {
-    if (key == 's' && KeyBoard0[0].getColor()==255) {
-      KeyBoard0[0].pressed(true);
-      KeyBoard0[0].playNote(KeyBoard0[0].pitch, true);
+    if (key == 's' && temp[0].getColor()==255) {
+      temp[0].pressed(true);
+      temp[0].playNote(temp[0].pitch, true);
     }
-    if (key == 'd' && KeyBoard0[1].getColor()==255) {
-      KeyBoard0[1].pressed(true);
-      KeyBoard0[1].playNote(KeyBoard0[1].pitch, true);
+    if (key == 'd' && temp[1].getColor()==255) {
+      temp[1].pressed(true);
+      temp[1].playNote(temp[1].pitch, true);
     }
-    if (key == 'f' && KeyBoard0[2].getColor()==255) {
-      KeyBoard0[2].pressed(true);
-      KeyBoard0[2].playNote(KeyBoard0[2].pitch, true);
+    if (key == 'f' && temp[2].getColor()==255) {
+      temp[2].pressed(true);
+      temp[2].playNote(temp[2].pitch, true);
     }
-    if (key == 'g' && KeyBoard0[3].getColor()==255) {
-      KeyBoard0[3].pressed(true);
-      KeyBoard0[3].playNote(KeyBoard0[3].pitch, true);
+    if (key == 'g' && temp[3].getColor()==255) {
+      temp[3].pressed(true);
+      temp[3].playNote(temp[3].pitch, true);
     }
-    if (key == 'h' && KeyBoard0[4].getColor()==255) {
-      KeyBoard0[4].pressed(true);
-      KeyBoard0[4].playNote(KeyBoard0[4].pitch, true);
+    if (key == 'h' && temp[4].getColor()==255) {
+      temp[4].pressed(true);
+      temp[4].playNote(temp[4].pitch, true);
     }
-    if (key == 'j' && KeyBoard0[5].getColor()==255) {
-      KeyBoard0[5].pressed(true);
-      KeyBoard0[5].playNote(KeyBoard0[5].pitch, true);
+    if (key == 'j' && temp[5].getColor()==255) {
+      temp[5].pressed(true);
+      temp[5].playNote(temp[5].pitch, true);
     }
-    if (key == 'k' && KeyBoard0[6].getColor()==255) {
-      KeyBoard0[6].pressed(true);
-      KeyBoard0[6].playNote(KeyBoard0[6].pitch, true);
+    if (key == 'k' && temp[6].getColor()==255) {
+      temp[6].pressed(true);
+      temp[6].playNote(temp[6].pitch, true);
     }
-    if (key == 'e' && KeyBoard0[7].getColor()==0) {
-      KeyBoard0[7].pressed(true);
-      KeyBoard0[7].playNote(KeyBoard0[7].pitch, true);
+    if (key == 'e' && temp[7].getColor()==0) {
+      temp[7].pressed(true);
+      temp[7].playNote(temp[7].pitch, true);
     }
-    if (key == 'r' && KeyBoard0[8].getColor()==0) {
-      KeyBoard0[8].pressed(true);
-      KeyBoard0[8].playNote(KeyBoard0[8].pitch, true);
+    if (key == 'r' && temp[8].getColor()==0) {
+      temp[8].pressed(true);
+      temp[8].playNote(temp[8].pitch, true);
     }
-    if (key == 'y' && KeyBoard0[9].getColor()==0) {
-      KeyBoard0[9].pressed(true);
-      KeyBoard0[9].playNote(KeyBoard0[9].pitch, true);
+    if (key == 'y' && temp[9].getColor()==0) {
+      temp[9].pressed(true);
+      temp[9].playNote(temp[9].pitch, true);
     }
-    if (key == 'u' && KeyBoard0[10].getColor()==0) {
-      KeyBoard0[10].pressed(true);
-      KeyBoard0[10].playNote(KeyBoard0[10].pitch, true);
+    if (key == 'u' && temp[10].getColor()==0) {
+      temp[10].pressed(true);
+      temp[10].playNote(temp[10].pitch, true);
     }
-    if (key == 'i' && KeyBoard0[11].getColor()==0) {
-      KeyBoard0[11].pressed(true);
-      KeyBoard0[11].playNote(KeyBoard0[11].pitch, true);
+    if (key == 'i' && temp[11].getColor()==0) {
+      temp[11].pressed(true);
+      temp[11].playNote(temp[11].pitch, true);
     }
   }
 }
 
 void keyReleased() {
   if (currentScreen == 1) {
-    if (key == 's' && KeyBoard0[0].getColor() == 200) {
-      KeyBoard0[0].pressed(false);
+    if (key == 's' && temp[0].getColor() == 200) {
+      temp[0].pressed(false);
       //KeyBoard0[0].playNote(KeyBoard0[0].pitch, false);
     }
-    if (key == 'd' && KeyBoard0[1].getColor() == 200) {
-      KeyBoard0[1].pressed(false);
+    if (key == 'd' && temp[1].getColor() == 200) {
+      temp[1].pressed(false);
       //KeyBoard0[1].playNote(KeyBoard0[1].pitch, false);
     }
-    if (key == 'f' && KeyBoard0[2].getColor() == 200) {
-      KeyBoard0[2].pressed(false);
+    if (key == 'f' && temp[2].getColor() == 200) {
+      temp[2].pressed(false);
       //KeyBoard0[2].playNote(KeyBoard0[2].pitch, false);
     }
-    if (key == 'g' && KeyBoard0[3].getColor() == 200) {
-      KeyBoard0[3].pressed(false);
+    if (key == 'g' && temp[3].getColor() == 200) {
+      temp[3].pressed(false);
       //KeyBoard0[3].playNote(KeyBoard0[3].pitch, false);
     }
-    if (key == 'h' && KeyBoard0[4].getColor() == 200) {
-      KeyBoard0[4].pressed(false);
+    if (key == 'h' && temp[4].getColor() == 200) {
+      temp[4].pressed(false);
       //KeyBoard0[4].playNote(KeyBoard0[4].pitch, false);
     }
-    if (key == 'j' && KeyBoard0[5].getColor() == 200) {
-      KeyBoard0[5].pressed(false);
+    if (key == 'j' && temp[5].getColor() == 200) {
+      temp[5].pressed(false);
       //KeyBoard0[5].playNote(KeyBoard0[5].pitch, false);
     }
-    if (key == 'k' && KeyBoard0[6].getColor() == 200) {
-      KeyBoard0[6].pressed(false);
+    if (key == 'k' && temp[6].getColor() == 200) {
+      temp[6].pressed(false);
       //KeyBoard0[6].playNote(KeyBoard0[6].pitch, false);
     }
-    if (key == 'e' && KeyBoard0[7].getColor() == 200) {
-      KeyBoard0[7].pressed(false);
+    if (key == 'e' && temp[7].getColor() == 200) {
+      temp[7].pressed(false);
       //KeyBoard0[7].playNote(KeyBoard0[7].pitch, false);
     }
-    if (key == 'r' && KeyBoard0[8].getColor() == 200) {
-      KeyBoard0[8].pressed(false);
+    if (key == 'r' && temp[8].getColor() == 200) {
+      temp[8].pressed(false);
       //KeyBoard0[8].playNote(KeyBoard0[8].pitch, false);
     }
-    if (key == 'y' && KeyBoard0[9].getColor() == 200) {
-      KeyBoard0[9].pressed(false);
+    if (key == 'y' && temp[9].getColor() == 200) {
+      temp[9].pressed(false);
       //KeyBoard0[9].playNote(KeyBoard0[9].pitch, false);
     }
-    if (key == 'u' && KeyBoard0[10].getColor() == 200) {
-      KeyBoard0[10].pressed(false);
+    if (key == 'u' && temp[10].getColor() == 200) {
+      temp[10].pressed(false);
       //KeyBoard0[10].playNote(KeyBoard0[10].pitch, false);
     }
-    if (key == 'i' && KeyBoard0[11].getColor() == 200) {
-      KeyBoard0[11].pressed(false);
+    if (key == 'i' && temp[11].getColor() == 200) {
+      temp[11].pressed(false);
       //KeyBoard0[11].playNote(KeyBoard0[11].pitch, false);
     }
   }
@@ -187,21 +210,21 @@ void keyReleased() {
 
 void displayPiano() {
   background(0);
-  for (int i=0; i<KeyBoard0.length; i++) {
-    KeyBoard0[i].show();
+  for (int i=0; i<temp.length; i++) {
+    temp[i].show();
   }
 }
 
 void displayTitle() {
   background(0);
   textSize(50);
-  textAlign(CENTER,CENTER);
+  textAlign(CENTER, CENTER);
   text("piano", 175, 100);
   rect(BeginX, BeginY, BeginW, BeginH);
   textSize(10);
-  textAlign(CENTER,CENTER);
+  textAlign(CENTER, CENTER);
   //fill(0);
-  text("begin", 125,150);
+  text("begin", 125, 150);
 }
 
 void mousePressed() {
