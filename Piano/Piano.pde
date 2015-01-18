@@ -78,7 +78,7 @@ void draw() {
     background(0); 
     break;
   }
-  octaveChange();
+  copyKeyBoard();
 }
 
 void octaveChange() {
@@ -90,7 +90,9 @@ void octaveChange() {
       currentOctave++;
     }
   }
-  
+}
+
+void copyKeyBoard(){
   if(currentOctave == 0){
     temp = KeyBoard0.clone();
   }
@@ -103,6 +105,7 @@ void octaveChange() {
 }
 
 void keyPressed() {
+  octaveChange();
   if (currentScreen == 1) {
     if (key == 's' && temp[0].getColor()==255) {
       temp[0].pressed(true);
