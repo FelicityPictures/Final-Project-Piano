@@ -80,3 +80,8 @@ Added 2 more octaves
 1/18/15:
 
 Added title screen //need to position text and buttons
+
+Added settings screen
+
+implemented octave meter and octave up and down works
+
