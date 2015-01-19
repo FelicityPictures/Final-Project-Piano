@@ -3,10 +3,14 @@ import themidibus.*;
 MidiBus midiBus;
 int currentScreen;
 int currentOctave = 0;
-int BeginX = 125;
-int BeginY = 150;
-int BeginW = 100;
-int BeginH = 30;
+int beginX = 125;
+int beginY = 150;
+int beginW = 100;
+int beginH = 30;
+int settingsX = 125;
+int settingsY = 200;
+int settingsW = 100;
+int settingsH = 30;
 
 Keys[] KeyBoard0 = new Keys[12];
 Keys[] KeyBoard1 = new Keys[12];
@@ -71,9 +75,8 @@ void draw() {
   case 1: 
     displayPiano(); 
     break;
-    //case 2: 
-    //drawScreenTwo(); 
-    //break;
+  case 2:
+    displaySettings();
   default: 
     background(0); 
     break;
@@ -83,23 +86,25 @@ void draw() {
 
 void octaveChange() {
   if (key == CODED) {
-    if (keyCode == SHIFT && currentOctave <= 1) {
+    if (keyCode == SHIFT && currentOctave <= 1 && currentOctave > -1) {
       currentOctave--;
+      println(currentOctave);
     }
-    if (keyCode == CONTROL && currentOctave >= -1) {
+    if (keyCode == CONTROL && currentOctave >= -1 && currentOctave < 1) {
       currentOctave++;
+      println(currentOctave);
     }
   }
 }
 
-void copyKeyBoard(){
-  if(currentOctave == 0){
+void copyKeyBoard() {
+  if (currentOctave == 0) {
     temp = KeyBoard0.clone();
   }
-  if(currentOctave == -1){
+  if (currentOctave == -1) {
     temp = KeyBoard2.clone();
   }
-  if(currentOctave == 1){
+  if (currentOctave == 1) {
     temp = KeyBoard1.clone();
   }
 }
@@ -219,20 +224,30 @@ void displayPiano() {
 }
 
 void displayTitle() {
+  String s = "begin";
+  String t = "settings";
   background(0);
   textSize(50);
   textAlign(CENTER, CENTER);
   text("piano", 175, 100);
-  rect(BeginX, BeginY, BeginW, BeginH);
+  rect(beginX, beginY, beginW, beginH);
   textSize(10);
-  textAlign(CENTER, CENTER);
   //fill(0);
-  text("begin", 125, 150);
+  text(s, 50 + (beginW - textWidth(s))/2, 50 + beginH);
+  rect(settingsX, settingsY, settingsW, settingsH);
 }
 
+void displaySettings() {
+} 
+
 void mousePressed() {
-  if (mouseX > BeginX && mouseX < BeginX+BeginW && mouseY > BeginY && mouseY < BeginY+BeginH) {
-    currentScreen = 1;
+  if (currentScreen == 0) {
+    if (mouseX > beginX && mouseX < beginX+beginW && mouseY > beginY && mouseY < beginY+beginH) {
+      currentScreen = 1;
+    }
+    if (mouseX > settingsX && mouseX < settingsX+settingsW && mouseY > settingsY && mouseY < settingsY+settingsH) {
+      currentScreen = 2;
+    }
   }
 }
 
