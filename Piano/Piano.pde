@@ -81,11 +81,13 @@ void draw() {
     background(0); 
     break;
   }
+  /*
   if (currentScreen == 1) {
     String s = "Octave " + currentOctave;
     textSize(32);
-    text(s,-95,-100, width, height);
+    text(s, -95, -100, width, height);
   }
+  */
   copyKeyBoard();
 }
 
@@ -93,11 +95,11 @@ void octaveChange() {
   if (key == CODED) {
     if (keyCode == SHIFT && currentOctave <= 1 && currentOctave > -1) {
       currentOctave--;
-      println(currentOctave);
+      //println(currentOctave);
     }
     if (keyCode == CONTROL && currentOctave >= -1 && currentOctave < 1) {
       currentOctave++;
-      println(currentOctave);
+      //println(currentOctave);
     }
   }
 }
@@ -223,6 +225,10 @@ void keyReleased() {
 
 void displayPiano() {
   background(0, 102, 153, 51);
+  String s = "octave " + currentOctave;
+  textSize(32);
+  fill(255);
+  text(s, -95, -100, width, height);
   for (int i=0; i<temp.length; i++) {
     temp[i].show();
   }
