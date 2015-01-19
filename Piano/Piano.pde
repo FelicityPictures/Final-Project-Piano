@@ -286,6 +286,16 @@ void displaySettings() {
   text(v,100,100);
   text(b,100,150);
   text(d,100,200);
+  //for background: Red, Green, Blue?
+  //red
+  fill(199,45,45);
+  rect(200,150,40,25);
+  //green
+  fill(35,163,59);
+  rect(250,150,40,25);
+  //blue
+  fill(0, 102, 153, 51);
+  rect(250,150,40,25);
 } 
 
 void displayHelp(){
@@ -301,7 +311,7 @@ void displayHelp(){
   fill(255);
   rect(155,280,50,20);
   fill(0);
-  text("BACK",175,290);
+  text("Back",175,290);
 }
 void mousePressed() {
   if (currentScreen == 0) {
