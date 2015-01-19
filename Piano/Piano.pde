@@ -81,6 +81,11 @@ void draw() {
     background(0); 
     break;
   }
+  if (currentScreen == 1) {
+    String s = "Octave " + currentOctave;
+    textSize(32);
+    text(s,-95,-100, width, height);
+  }
   copyKeyBoard();
 }
 
@@ -217,7 +222,7 @@ void keyReleased() {
 }
 
 void displayPiano() {
-  background(0);
+  background(0, 102, 153, 51);
   for (int i=0; i<temp.length; i++) {
     temp[i].show();
   }
