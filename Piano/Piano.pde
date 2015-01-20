@@ -3,9 +3,9 @@ import themidibus.*;
 MidiBus midiBus;
 int currentScreen;
 int currentOctave = 0;
-int beginX = 125;
+int beginX = 115;
 int beginY = 150;
-int beginW = 100;
+int beginW = 120;
 int beginH = 30;
 int settingsX = 125;
 int settingsY = 200;
@@ -65,6 +65,7 @@ void setup() {
   KeyBoard2[11] = new BlackKeys(285, 100, 58);
 
   midiBus = new MidiBus(this, 0, 2);
+  midiBus.sendMessage(0xc0, 7, 0, 0); 
 }
 
 void draw() {
@@ -225,38 +226,92 @@ void keyReleased() {
 
 void displayPiano() {
   background(0, 102, 153, 51);
-  String s = "octave " + currentOctave;
+  String o = "";
+  if(currentOctave == -1){
+    o = "Lower";
+  }
+  if(currentOctave == 0){
+    o = "Middle";
+  }
+  if(currentOctave == 1){
+    o = "Higher";
+  }
+  String s = o + " Octave";
   textSize(32);
   fill(255);
-  text(s, -95, -100, width, height);
+  text(s, 0, -100, width, height);
   for (int i=0; i<temp.length; i++) {
     temp[i].show();
   }
+  fill(255);
+  //instructions
+  rect(325,5,20,20);
+  fill(0);
+  textSize(15);
+  text("?",335,13);
+  //settings
+  fill(255);
+  rect(5,5,20,20);
+  fill(0);
+  text("S",15,13);
 }
 
 void displayTitle() {
-  String s = "begin";
-  String t = "settings";
+  String s = "Click to begin";
+  String t = "Settings";
   background(0);
   textSize(50);
   textAlign(CENTER, CENTER);
-  text("piano", 175, 100);
+  fill(255);
+  text("Tiny Piano", 175, 90);
   rect(beginX, beginY, beginW, beginH);
-  textSize(10);
-  //fill(0);
-  text(s, 50 + (beginW - textWidth(s))/2, 50 + beginH);
+  textSize(15);
+  fill(35,163,59);
+  text(s,175,162);
+  fill(255);
   rect(settingsX, settingsY, settingsW, settingsH);
+  fill(199,45,45);
+  text(t,175,212);
 }
 
 void displaySettings() {
+  background(0);
+  String v = "Volume:";
+  String b = "Background Color:";
+  String d = "Display notes?";
+  fill(255);
+  textSize(50);
+  textAlign(CENTER);
+  text("Settings",CENTER,50);
+  textSize(20);
+  text(v,100,100);
+  text(b,100,150);
+  text(d,100,200);
 } 
 
+void displayHelp(){
+  background(0);
+    String h = "To play: press SDFGHJK on your keyboard for white keys and ERYUI for black keys.";
+    String c = "To change octaves: press CTRL to change to a higher octave and SHIFT to change to a lower octave.";
+  textSize(50);
+  textAlign(CENTER);
+  text("How to use Tiny Piano",CENTER, 30);
+  textSize(22);
+  text(h, 10, 50);
+  text(c, 10, 100);
+  fill(255);
+  rect(155,280,50,20);
+  fill(0);
+  text("BACK",175,290);
+}
 void mousePressed() {
   if (currentScreen == 0) {
-    if (mouseX > beginX && mouseX < beginX+beginW && mouseY > beginY && mouseY < beginY+beginH) {
+    if (mouseX > beginX && mouseX < beginX+beginW && mouseY > beginY
+    && mouseY < beginY+beginH) {
       currentScreen = 1;
     }
-    if (mouseX > settingsX && mouseX < settingsX+settingsW && mouseY > settingsY && mouseY < settingsY+settingsH) {
+    if (mouseX > settingsX && mouseX < settingsX+settingsW
+    && mouseY > settingsY && mouseY < settingsY+settingsH) {
       currentScreen = 2;
     }
   }
