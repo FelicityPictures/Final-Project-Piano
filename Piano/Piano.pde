@@ -11,6 +11,10 @@ int settingsX = 125;
 int settingsY = 200;
 int settingsW = 100;
 int settingsH = 30;
+int helpX;
+int helpY;
+int helpW;
+int helpH;
 
 Keys[] KeyBoard0 = new Keys[12];
 Keys[] KeyBoard1 = new Keys[12];
@@ -77,17 +81,15 @@ void draw() {
     break;
   case 2:
     displaySettings();
+    break;
+  case 3:
+    displayHelp();
+    break;
   default: 
     background(0); 
     break;
   }
-  /*
-  if (currentScreen == 1) {
-    String s = "Octave " + currentOctave;
-    textSize(32);
-    text(s, -95, -100, width, height);
-  }
-  */
+
   copyKeyBoard();
 }
 
@@ -226,13 +228,13 @@ void keyReleased() {
 void displayPiano() {
   background(0, 102, 153, 51);
   String o = "";
-  if(currentOctave == -1){
+  if (currentOctave == -1) {
     o = "Lower";
   }
-  if(currentOctave == 0){
+  if (currentOctave == 0) {
     o = "Middle";
   }
-  if(currentOctave == 1){
+  if (currentOctave == 1) {
     o = "Higher";
   }
   String s = o + " Octave";
@@ -244,15 +246,19 @@ void displayPiano() {
   }
   fill(255);
   //instructions
-  rect(325,5,20,20);
+  helpX = 325;
+  helpY = 5;
+  helpW = 20;
+  helpH = 20;
+  rect(helpX, helpY, helpW, helpH);
   fill(0);
   textSize(15);
-  text("?",335,13);
+  text("?", 335, 13);
   //settings
   fill(255);
-  rect(5,5,20,20);
+  rect(5, 5, 20, 20);
   fill(0);
-  text("S",15,13);
+  text("S", 15, 13);
 }
 
 void displayTitle() {
@@ -265,12 +271,12 @@ void displayTitle() {
   text("Tiny Piano", 175, 90);
   rect(beginX, beginY, beginW, beginH);
   textSize(15);
-  fill(35,163,59);
-  text(s,175,162);
+  fill(35, 163, 59);
+  text(s, 175, 162);
   fill(255);
   rect(settingsX, settingsY, settingsW, settingsH);
-  fill(199,45,45);
-  text(t,175,212);
+  fill(199, 45, 45);
+  text(t, 175, 212);
 }
 
 void displaySettings() {
@@ -281,47 +287,53 @@ void displaySettings() {
   fill(255);
   textSize(50);
   textAlign(CENTER);
-  text("Settings",CENTER,50);
+  text("Settings", CENTER, 50);
   textSize(20);
-  text(v,100,100);
-  text(b,100,150);
-  text(d,100,200);
+  text(v, 100, 100);
+  text(b, 100, 150);
+  text(d, 100, 200);
   //for background: Red, Green, Blue?
   //red
-  fill(199,45,45);
-  rect(200,150,40,25);
+  fill(199, 45, 45);
+  rect(200, 150, 40, 25);
   //green
-  fill(35,163,59);
-  rect(250,150,40,25);
+  fill(35, 163, 59);
+  rect(250, 150, 40, 25);
   //blue
   fill(0, 102, 153, 51);
-  rect(250,150,40,25);
+  rect(250, 150, 40, 25);
 } 
 
-void displayHelp(){
+void displayHelp() {
   background(0);
-    String h = "To play: press SDFGHJK on your keyboard for white keys and ERYUI for black keys.";
-    String c = "To change octaves: press CTRL to change to a higher octave and SHIFT to change to a lower octave.";
+  String h = "To play: press SDFGHJK on your keyboard for white keys and ERYUI for black keys.";
+  String c = "To change octaves: press CTRL to change to a higher octave and SHIFT to change to a lower octave.";
   textSize(50);
   textAlign(CENTER);
-  text("How to use Tiny Piano",CENTER, 30);
+  text("How to use Tiny Piano", CENTER, 30);
   textSize(22);
   text(h, 10, 50);
   text(c, 10, 100);
   fill(255);
-  rect(155,280,50,20);
+  rect(155, 280, 50, 20);
   fill(0);
-  text("Back",175,290);
+  text("Back", 175, 290);
 }
 void mousePressed() {
   if (currentScreen == 0) {
     if (mouseX > beginX && mouseX < beginX+beginW && mouseY > beginY
-    && mouseY < beginY+beginH) {
+      && mouseY < beginY+beginH) {
       currentScreen = 1;
     }
     if (mouseX > settingsX && mouseX < settingsX+settingsW
-    && mouseY > settingsY && mouseY < settingsY+settingsH) {
+      && mouseY > settingsY && mouseY < settingsY+settingsH) {
       currentScreen = 2;
+    }
+  }
+  if (currentScreen == 1) {
+    if (mouseX > helpX && mouseX < helpX+helpW && mouseY > helpY
+      && mouseY < helpY+helpH) {
+      currentScreen = 3;
     }
   }
 }
