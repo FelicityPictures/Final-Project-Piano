@@ -65,7 +65,6 @@ void setup() {
   KeyBoard2[11] = new BlackKeys(285, 100, 58);
 
   midiBus = new MidiBus(this, 0, 2);
-  midiBus.sendMessage(0xc0, 7, 0, 0); 
 }
 
 void draw() {
