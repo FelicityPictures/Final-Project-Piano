@@ -4,19 +4,11 @@ Final project for APCS, Mr. K, period 6. Vivian Li and Felicity Ng are creating 
 
 FEATURES: 
 
-Playable 1 octave piano
+Playable 3 octave piano (low, middle, high)
 
-Uses keyboard and mouse clicks
+Uses keyboard
 
-PLANNED:
-
-Other Modes planned 
-
-Ideas:
-
-Different instrument sounds
-
-
+Can Play Multiple instruments
 
 
 1/6/15:
@@ -84,4 +76,14 @@ Added title screen //need to position text and buttons
 Added settings screen
 
 implemented octave meter and octave up and down works
+
+1/20/15:
+
+Fixed all formatting
+
+included drop down menu of playable instruments
+
+aesthetic fixes
+
+Filled in help/credit page
 
