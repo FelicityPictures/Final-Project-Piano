@@ -312,14 +312,15 @@ void displaySettings() {
   background(0);
   String v = "Volume:";
   String b = "Background Color:";
-  String d = "Display notes?";
+  String d = "Created by Vivian Li and Felicity Ng";
   fill(255);
   textSize(50);
   text("Settings", 175, 40);
   textSize(20);
   text(v, 71, 110);
   text(b, 120, 160);
-  text(d, 99, 210);
+  textSize(15);
+  text(d, 175, 210);
   //for background: Red, Green, Blue?
   //red
   fill(199, 45, 45);
@@ -348,26 +349,19 @@ void displaySettings() {
   rect(soundLowX,soundLowY,soundLowW,soundLowH);
   rect(soundMedX,soundMedY,soundMedW,soundMedH);
   rect(soundHiX,soundHiY,soundHiW,soundHiH);
-  //notes?
-  rect(185,200,60,25);
-  rect(260,200,60,25);
   //volume
   fill(177,15,110);
   textSize(15);
   text("Meh",155,110);
   text("Okay",225,110);
   text("YEAH",295,110);
-  fill(0,132,75);
-  text("Noob",215,210);
-  fill(229,0,122);
-  text("Pro",290,210);
   //finished button (Takes you to piano)
   fill(255);
   pianoX = 130;
   pianoY = 250;
   pianoW = 90;
   pianoH = 30;
-  rect(pianoX,pianoY,pianoX,pianoH);
+  rect(pianoX,pianoY,pianoW,pianoH);
   fill(0);
   text("Piano time!",175,263);  
 } 
@@ -376,22 +370,20 @@ void displayHelp() {
   background(0);
   String h = "To play: press SDFGHJK on your keyboard \n for white keys and ERYUI for black keys.";
   String c = "To change octaves: press CTRL to change \n to a higher octave and SHIFT to change to \n a lower octave.";
-  String i = "To change instruments: press any number \n from 0-9";
   textSize(25);
   fill(255);
-  text("How to use Tiny Piano", 175, 25);
+  text("How to use Tiny Piano", 175, 45);
   textSize(15);
-  text(h, 175, 80);
-  text(c, 175, 153);
-  text(i,175, 225);
+  text(h, 175, 100);
+  text(c, 175, 173);
   fill(255);
   backX = 145;
-  backY = 262;
+  backY = 252;
   backW = 60;
   backH = 26;
   rect(backX, backY, backW, backH);
   fill(0);
-  text("Back", 175, 273);
+  text("Back", 175, 263);
 }
 
 boolean overMouse(int x, int y, int w, int h){
