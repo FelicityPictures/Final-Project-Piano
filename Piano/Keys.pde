@@ -1,7 +1,7 @@
 class Keys {
   //Instance variables: width, length, x/y coordinate, color; note
   int x, y, origColor, col, pitch;
-  int instr, vol;
+  int vol;
   Note note;
 
   //constructor
@@ -12,11 +12,8 @@ class Keys {
     setOrigColor(origColor);
     setColor(origColor);
     setPitch(pitch);
+    setVol(vol);
     setNote(pitch);
-  }
-
-  Keys(int i) {
-    setInstr(i);
   }
 
   Keys() {
@@ -53,14 +50,6 @@ class Keys {
 
   int getColor() {
     return col;
-  }
-
-  void setInstr(int i) {
-    instr = i;
-  }
-
-  int getInstr() {
-    return instr;
   }
 
   void setVol(int v) {

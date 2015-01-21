@@ -81,7 +81,7 @@ void setup() {
   DropdownList instruments = cp5.addDropdownList("Instruments").setPosition(125, 23);
   makeInstrNames();
   instruments.addItems(instrNames);
-  
+  //midiBus.sendMessage(0xC0, 0, currentIndex, 0);
 }
 
 void controlEvent(ControlEvent e) {
@@ -115,7 +115,7 @@ void draw() {
     break;
   }
   copyKeyBoard();
-  midiBus.sendMessage(0xC0, 0, currentIndex, 0);
+  //midiBus.sendMessage(0xC0, 0, currentIndex, 0);
 }
 
 void octaveChange() {
@@ -145,6 +145,7 @@ void copyKeyBoard() {
 
 void keyPressed() {
   octaveChange();
+  midiBus.sendMessage(0xC0, 0, currentIndex, 0);
   if (currentScreen == 1) {
     if (key == 's' && temp[0].getColor()==255) {
       temp[0].pressed(true);
@@ -287,12 +288,12 @@ void displayPiano() {
   setH = 20;
   rect(setX, setY, setW, setH);
   fill(0);
-  text("S", 15, 13);
+  text("C", 15, 13);
 }
 
 void displayTitle() {
   String s = "Click to begin";
-  String t = "Settings";
+  String t = "Credits";
   background(0);
   textSize(50);
   textAlign(CENTER, CENTER);
@@ -312,15 +313,18 @@ void displaySettings() {
   background(0);
   String v = "Volume:";
   String b = "Background Color:";
-  String d = "Created by Vivian Li and Felicity Ng";
+  String d = "Created by Vivian Li";
+  String e = "and Felicity Ng";
   fill(255);
   textSize(50);
-  text("Settings", 175, 40);
+  text("Credits", 175, 40);
+  //textSize(20);
+  //text(v, 71, 110);
+  //text(b, 120, 160);
   textSize(20);
-  text(v, 71, 110);
-  text(b, 120, 160);
-  textSize(15);
-  text(d, 175, 210);
+  text(d, 175, 140);
+  text(e, 175, 170);
+  /*
   //for background: Red, Green, Blue?
   //red
   fill(199, 45, 45);
@@ -346,24 +350,26 @@ void displaySettings() {
   soundHiY = 100;
   soundHiW = 50;
   soundHiH = 25;
-  rect(soundLowX,soundLowY,soundLowW,soundLowH);
-  rect(soundMedX,soundMedY,soundMedW,soundMedH);
-  rect(soundHiX,soundHiY,soundHiW,soundHiH);
+  rect(soundLowX, soundLowY, soundLowW, soundLowH);
+  rect(soundMedX, soundMedY, soundMedW, soundMedH);
+  rect(soundHiX, soundHiY, soundHiW, soundHiH);
   //volume
-  fill(177,15,110);
+  fill(177, 15, 110);
   textSize(15);
-  text("Meh",155,110);
-  text("Okay",225,110);
-  text("YEAH",295,110);
+  text("Meh", 155, 110);
+  text("Okay", 225, 110);
+  text("YEAH", 295, 110);
+  */
   //finished button (Takes you to piano)
   fill(255);
   pianoX = 130;
   pianoY = 250;
   pianoW = 90;
   pianoH = 30;
-  rect(pianoX,pianoY,pianoW,pianoH);
+  rect(pianoX, pianoY, pianoW, pianoH);
   fill(0);
-  text("Piano time!",175,263);  
+  textSize(15);
+  text("Piano time!", 175, 263);
 } 
 
 void displayHelp() {
@@ -386,9 +392,9 @@ void displayHelp() {
   text("Back", 175, 263);
 }
 
-boolean overMouse(int x, int y, int w, int h){
+boolean overMouse(int x, int y, int w, int h) {
   return(mouseX > x && mouseX < x+w
-      && mouseY > y && mouseY < y+h);
+    && mouseY > y && mouseY < y+h);
 }
 
 void mousePressed() {
@@ -404,25 +410,25 @@ void mousePressed() {
     if (overMouse(helpX, helpY, helpW, helpH)) {
       currentScreen = 3;
     }
-    if(overMouse(setX, setY, setW, setH)){
+    if (overMouse(setX, setY, setW, setH)) {
       currentScreen = 2;
     }
   }
-  if(currentScreen == 2){
-    if(overMouse(pianoX, pianoY, pianoW, pianoH)){
+  if (currentScreen == 2) {
+    if (overMouse(pianoX, pianoY, pianoW, pianoH)) {
       currentScreen = 1;
     }
-    if(overMouse(soundLowX, soundLowY, soundLowW, soundLowH)){
+    if (overMouse(soundLowX, soundLowY, soundLowW, soundLowH)) {
     }
-    if(overMouse(soundMedX, soundMedY, soundMedW, soundMedH)){
+    if (overMouse(soundMedX, soundMedY, soundMedW, soundMedH)) {
     }
-    if(overMouse(soundHiX, soundHiY, soundHiW, soundHiH)){
+    if (overMouse(soundHiX, soundHiY, soundHiW, soundHiH)) {
     }
   }
-  if(currentScreen == 3){
-     if (overMouse(backX, backY, backW, backH)){
-        currentScreen = 1;
-      }
-  }   
+  if (currentScreen == 3) {
+    if (overMouse(backX, backY, backW, backH)) {
+      currentScreen = 1;
+    }
+  }
 }
 
