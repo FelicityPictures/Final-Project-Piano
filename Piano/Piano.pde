@@ -18,6 +18,8 @@ int setX, setY, setW, setH;
 int backX, backY, backW, backH;
 int pianoX, pianoY, pianoW, pianoH;
 int soundLowX, soundLowY, soundLowW, soundLowH;
+int soundMedX, soundMedY, soundMedW, soundMedH;
+int soundHiX, soundHiY, soundHiW, soundHiH;
 int currentIndex;
 
 String[] instrNames = new String[128];
@@ -331,9 +333,21 @@ void displaySettings() {
   //Volume: Loudish,Loud,Loudest
   fill(255);
   //volume
-  rect(130,100,50,25);
-  rect(200,100,50,25);
-  rect(270,100,50,25);
+  soundLowX = 130;
+  soundLowY = 100;
+  soundLowW = 50;
+  soundLowH = 25;
+  soundMedX = 200;
+  soundMedY = 100;
+  soundMedW = 50;
+  soundMedH = 25;
+  soundHiX = 270;
+  soundHiY = 100;
+  soundHiW = 50;
+  soundHiH = 25;
+  rect(soundLowX,soundLowY,soundLowW,soundLowH);
+  rect(soundMedX,soundMedY,soundMedW,soundMedH);
+  rect(soundHiX,soundHiY,soundHiW,soundHiH);
   //notes?
   rect(185,200,60,25);
   rect(260,200,60,25);
@@ -405,6 +419,12 @@ void mousePressed() {
   if(currentScreen == 2){
     if(overMouse(pianoX, pianoY, pianoW, pianoH)){
       currentScreen = 1;
+    }
+    if(overMouse(soundLowX, soundLowY, soundLowW, soundLowH)){
+    }
+    if(overMouse(soundMedX, soundMedY, soundMedW, soundMedH)){
+    }
+    if(overMouse(soundHiX, soundHiY, soundHiW, soundHiH)){
     }
   }
   if(currentScreen == 3){
