@@ -330,18 +330,20 @@ void displaySettings() {
 
 void displayHelp() {
   background(0);
-  String h = "To play: press SDFGHJK on your keyboard for white keys and ERYUI for black keys.";
-  String c = "To change octaves: press CTRL to change to a higher octave and SHIFT to change to a lower octave.";
-  textSize(50);
-  textAlign(CENTER);
-  text("How to use Tiny Piano", CENTER, 30);
-  textSize(22);
-  text(h, 10, 50);
-  text(c, 10, 100);
+  String h = "To play: press SDFGHJK on your keyboard \n for white keys and ERYUI for black keys.";
+  String c = "To change octaves: press CTRL to change \n to a higher octave and SHIFT to change to \n a lower octave.";
+  String i = "To change instruments: press any number \n from 0-9";
+  textSize(25);
   fill(255);
-  rect(155, 280, 50, 20);
+  text("How to use Tiny Piano", 175, 25);
+  textSize(15);
+  text(h, 175, 80);
+  text(c, 175, 153);
+  text(i,175, 225);
+  fill(255);
+  rect(145, 262, 60, 26);
   fill(0);
-  text("Back", 175, 290);
+  text("Back", 175, 273);
 }
 void mousePressed() {
   if (currentScreen == 0) {
