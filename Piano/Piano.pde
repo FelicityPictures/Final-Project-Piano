@@ -1,6 +1,8 @@
-import themidibus.*; 
+import themidibus.*;
+import controlP5.*;
 
 MidiBus midiBus;
+ControlP5 cp5;
 int currentScreen;
 int currentOctave = 0;
 int beginX = 115;
@@ -11,10 +13,14 @@ int settingsX = 125;
 int settingsY = 200;
 int settingsW = 100;
 int settingsH = 30;
-int helpX;
-int helpY;
-int helpW;
-int helpH;
+int helpX, helpY, helpW, helpH;
+int setX, setY, setW, setH;
+int backX, backY, backW, backH;
+int pianoX, pianoY, pianoW, pianoH;
+int soundLowX, soundLowY, soundLowW, soundLowH;
+int currentIndex;
+
+String[] instrNames = new String[128];
 
 Keys[] KeyBoard0 = new Keys[12];
 Keys[] KeyBoard1 = new Keys[12];
@@ -69,7 +75,24 @@ void setup() {
   KeyBoard2[11] = new BlackKeys(285, 100, 58);
 
   midiBus = new MidiBus(this, 0, 2);
+  cp5 = new ControlP5(this);  
+  DropdownList instruments = cp5.addDropdownList("Instruments").setPosition(125, 23);
+  makeInstrNames();
+  instruments.addItems(instrNames);
+  
 }
+
+void controlEvent(ControlEvent e) {
+  if (e.name().equals("Instruments")) {
+    currentIndex = (int)e.group().value();
+    println(currentIndex);
+  }
+}
+
+void makeInstrNames() {
+  instrNames = loadStrings("InstrNames.txt");
+}
+
 
 void draw() {
   switch(currentScreen) {
@@ -89,8 +112,8 @@ void draw() {
     background(0); 
     break;
   }
-
   copyKeyBoard();
+  midiBus.sendMessage(0xC0, 0, currentIndex, 0);
 }
 
 void octaveChange() {
@@ -256,7 +279,11 @@ void displayPiano() {
   text("?", 335, 13);
   //settings
   fill(255);
-  rect(5, 5, 20, 20);
+  setX = 5;
+  setY = 5;
+  setW = 20;
+  setH = 20;
+  rect(setX, setY, setW, setH);
   fill(0);
   text("S", 15, 13);
 }
@@ -322,10 +349,13 @@ void displaySettings() {
   text("Pro",290,210);
   //finished button (Takes you to piano)
   fill(255);
-  rect(130,250,90,30);
+  pianoX = 130;
+  pianoY = 250;
+  pianoW = 90;
+  pianoH = 30;
+  rect(pianoX,pianoY,pianoX,pianoH);
   fill(0);
-  text("Piano time!",175,263);
-  
+  text("Piano time!",175,263);  
 } 
 
 void displayHelp() {
@@ -341,26 +371,46 @@ void displayHelp() {
   text(c, 175, 153);
   text(i,175, 225);
   fill(255);
-  rect(145, 262, 60, 26);
+  backX = 145;
+  backY = 262;
+  backW = 60;
+  backH = 26;
+  rect(backX, backY, backW, backH);
   fill(0);
   text("Back", 175, 273);
 }
+
+boolean overMouse(int x, int y, int w, int h){
+  return(mouseX > x && mouseX < x+w
+      && mouseY > y && mouseY < y+h);
+}
+
 void mousePressed() {
   if (currentScreen == 0) {
-    if (mouseX > beginX && mouseX < beginX+beginW && mouseY > beginY
-      && mouseY < beginY+beginH) {
+    if (overMouse(beginX, beginY, beginW, beginH)) {
       currentScreen = 1;
     }
-    if (mouseX > settingsX && mouseX < settingsX+settingsW
-      && mouseY > settingsY && mouseY < settingsY+settingsH) {
+    if (overMouse(settingsX, settingsY, settingsW, settingsH)) {
       currentScreen = 2;
     }
   }
   if (currentScreen == 1) {
-    if (mouseX > helpX && mouseX < helpX+helpW && mouseY > helpY
-      && mouseY < helpY+helpH) {
+    if (overMouse(helpX, helpY, helpW, helpH)) {
       currentScreen = 3;
     }
+    if(overMouse(setX, setY, setW, setH)){
+      currentScreen = 2;
+    }
   }
+  if(currentScreen == 2){
+    if(overMouse(pianoX, pianoY, pianoW, pianoH)){
+      currentScreen = 1;
+    }
+  }
+  if(currentScreen == 3){
+     if (overMouse(backX, backY, backW, backH)){
+        currentScreen = 1;
+      }
+  }   
 }
 

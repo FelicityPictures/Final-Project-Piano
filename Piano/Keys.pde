@@ -1,9 +1,11 @@
-public class Keys {
+class Keys {
   //Instance variables: width, length, x/y coordinate, color; note
   int x, y, origColor, col, pitch;
+  int instr, vol;
   Note note;
 
   //constructor
+
   Keys(int x, int y, int origColor, int pitch) {
     setx(x);
     sety(y);
@@ -11,6 +13,10 @@ public class Keys {
     setColor(origColor);
     setPitch(pitch);
     setNote(pitch);
+  }
+
+  Keys(int i) {
+    setInstr(i);
   }
 
   Keys() {
@@ -49,13 +55,23 @@ public class Keys {
     return col;
   }
 
-  void setNote(int p) {
-    int c = 0;
-    int v = 100;
-    //int t = 500;
-    p = pitch;
-    note = new Note(c, p, v);
+  void setInstr(int i) {
+    instr = i;
   }
+
+  int getInstr() {
+    return instr;
+  }
+
+  void setVol(int v) {
+    vol = v;
+  }
+
+  void setNote(int p) {
+    p = pitch;
+    note = new Note(0, p, 100);
+  }
+
 
   void show() {
   }
@@ -64,20 +80,11 @@ public class Keys {
   //used by Piano to change color and play note
 
   public void pressed(boolean p) {
-    /*
-    if (p) {
-     setColor(255);
-     show();
-     } else {
-     //go back to normal
-     setColor(origColor);
-     show();
-     }
-     */
   }
 
   void playNote(int p, boolean b) {
     if (b == true) {
+      //midiBus.sendMessage(0xC0, 0, instr, 0);
       midiBus.sendNoteOn(note);
     }
   }
