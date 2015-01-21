@@ -226,7 +226,7 @@ void keyReleased() {
 }
 
 void displayPiano() {
-  background(0, 102, 153, 51);
+  background(0, 102, 153);
   String o = "";
   if (currentOctave == -1) {
     o = "Lower";
@@ -286,22 +286,46 @@ void displaySettings() {
   String d = "Display notes?";
   fill(255);
   textSize(50);
-  textAlign(CENTER);
-  text("Settings", CENTER, 50);
+  text("Settings", 175, 40);
   textSize(20);
-  text(v, 100, 100);
-  text(b, 100, 150);
-  text(d, 100, 200);
+  text(v, 71, 110);
+  text(b, 120, 160);
+  text(d, 99, 210);
   //for background: Red, Green, Blue?
   //red
   fill(199, 45, 45);
-  rect(200, 150, 40, 25);
+  rect(225, 155, 25, 15);
   //green
   fill(35, 163, 59);
-  rect(250, 150, 40, 25);
+  rect(260, 155, 25, 15);
   //blue
-  fill(0, 102, 153, 51);
-  rect(250, 150, 40, 25);
+  fill(0, 102, 153);
+  rect(295, 155, 25, 15);
+  //Volume: Loudish,Loud,Loudest
+  fill(255);
+  //volume
+  rect(130,100,50,25);
+  rect(200,100,50,25);
+  rect(270,100,50,25);
+  //notes?
+  rect(185,200,60,25);
+  rect(260,200,60,25);
+  //volume
+  fill(177,15,110);
+  textSize(15);
+  text("Meh",155,110);
+  text("Okay",225,110);
+  text("YEAH",295,110);
+  fill(0,132,75);
+  text("Noob",215,210);
+  fill(229,0,122);
+  text("Pro",290,210);
+  //finished button (Takes you to piano)
+  fill(255);
+  rect(130,250,90,30);
+  fill(0);
+  text("Piano time!",175,263);
+  
 } 
 
 void displayHelp() {
